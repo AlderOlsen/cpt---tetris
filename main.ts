@@ -10,7 +10,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function timeToBottom (num: number) {
-    Time = Math.round((105 - num) / speed * (pause2 / 1000) + 0.5)
+    Time = Math.round((105 - mySprite.y) / speed * (num / 1000) + 0.5)
     return Time
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -19,8 +19,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    speed = 3
-    pause2 = 50
+    speed = 5
+    pause2 = 75
 })
 function Rotation (num: number) {
     transformSprites.changeRotation(mySprite, num)
@@ -582,7 +582,7 @@ while (playing) {
     while (bottom) {
         mySprite.y += speed
         pause(pause2)
-        mySprite.sayText(timeToBottom(mySprite.y), 500, false)
+        mySprite.sayText(timeToBottom(pause2), 500, false)
         for (let index = 0; index <= Blocks2.length - 1; index++) {
             if (mySprite.overlapsWith(Blocks2[index])) {
                 while (mySprite.overlapsWith(Blocks2[index])) {
